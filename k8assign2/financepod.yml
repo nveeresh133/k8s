@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: temp-bus 
+  namespace: finance-veer
+spec:
+  containers:
+  - name: finance-redis
+    image: redis:alpine
+    ports:
+    - containerPort: 6379
+

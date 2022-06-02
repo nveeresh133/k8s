@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deploy
+  namespace: veeresh
+  labels:
+    type: deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: deploy
+  template:
+    metadata:
+      labels:
+        type: deploy
+    spec:
+      containers:
+      - name: server
+        image: aamirpinger/server-app-image-name
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-service
+  namespace: veeresh
+spec:
+  type: ClusterIP
+  selector:
+    type: deploy
+  ports:
+  - port: 5000
+    targetPort: 2000
+

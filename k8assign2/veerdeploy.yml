@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veeryasih-deployment
+  namespace: veeresh
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "100Mi"
+          limits:
+            cpu: "100m"
+            memory: "200Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hpa-service
+  namespace: veeresh
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: nginx
+
+
+
+
+
+
+
+
