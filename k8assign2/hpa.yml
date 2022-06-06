@@ -1,16 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: image-registry
+  name: veeresh-autoscale
   namespace: veeresh
 spec:
-  maxReplicas: 7
-  minReplicas: 3
+  maxReplicas: 3
+  minReplicas: 1
   scaleTargetRef:
-    apiVersion: apps.openshift.io/v1
-    kind: DeploymentConfig
-    name: image-registry
-  targetCPUUtilizationPercentage: 75
-status:
-  currentReplicas: 5
-  desiredReplicas: 0
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veeryasih-deployment 
+  targetCPUUtilizationPercentage: 30

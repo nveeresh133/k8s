@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::883195043912:role/vpnoderole
+      username: system:node:{{EC2PrivateDNSName}}
+    - groups:
+      - eks-console-dashboard-full-access-group
+      rolearn: arn:aws:iam::883195043912:role/my-console-viewer-role
+      username: my-console-viewer-role
+  mapUsers: |
+    - groups:
+      - system:masters
+      userarn: arn:aws:iam::883195043912:user/veereshnagavi10@gmail.com
+      username: veereshnagavi10@gmail.com
+    - groups:
+      - system:masters
+      userarn: arn:aws:iam::883195043912:user/namratamansur@gmail.com
+      username: namratamansur@gmail.com
+    - groups:
+      - system:masters
+      userarn: arn:aws:iam::883195043912:user/poojashivakumar3098@gmail.com
+      username: poojashivakumar3098@gmail.com
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-05-27T06:29:38Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "594381"
+  uid: 484115dd-6fd6-4c2b-a936-7469a01edd76
+
