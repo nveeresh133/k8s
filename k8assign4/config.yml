@@ -1,0 +1,8 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: cm-3392845 
+Data:
+  DB_NAME: SQL3322
+  DB_HOST: sql322.mycompany.com
+  DB_PORT: 3306
